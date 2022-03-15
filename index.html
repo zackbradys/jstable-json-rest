@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Convert JSON Data to HTML Table</title>
+    <style>
+        #jobStatusTable {
+	    border: 1px solid #dddddd;
+	    width: 100%;
+        margin-bottom: 20px;
+    }
+    </style>
+</head>
+<body>
+    <table id="jobStatusTable">
+        <thead>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Gender</th>
+            <th>Designation</th>
+            <th>Age</th>
+        </thead>
+        <tbody id="jobStatusData"></tbody>
+    </table>
+        
+        <br><br><br><br><br><br><br>
+        <script>
+            $.getJSON('E:\Code\jstable-json-rest\jobStatus.json', function(data){
+            console.log(data);
+            $(data).each(function(i, data){
+                $('#jobStatusData').append($("<tr>")
+                    .append($("<td>").append(data.name))
+                    .append($("<td>").append(data.address))
+                    .append($("<td>").append(data.gender))
+                    .append($("<td>").append(data.designation))
+                    .append($("<td>").append(data.age)));
+            });
+            })
+                .done(function(){
+                    alert("Completed");
+                })
+                .fail(function(e){
+                    console.log('error:');
+                    console.error(e);
+                })
+                .always(function(){
+                    alert("always runs");
+                });
+        </script>
+</body>
+</html>
