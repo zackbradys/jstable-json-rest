@@ -1,50 +1,46 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Convert JSON Data to HTML Table</title>
     <style>
         #jobStatusTable {
-	    border: 1px solid #dddddd;
-	    width: 100%;
-        margin-bottom: 20px;
-    }
+            border: 1px solid #dddddd;
+            width: 100%;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
+
 <body>
-    <table id="jobStatusTable">
-        <thead>
-            <th>Name</th>
-            <th>Address</th>
-            <th>Gender</th>
-            <th>Designation</th>
-            <th>Age</th>
+    <table class="table table-bordered table-hover" id="doctorresultTable">
+        <thead <tr>
+            <th>Doctor Name</th>
+            <th>Speciality</th>
+            <th>Hospital</th>
+            <th>Date</th>
+            <th>Time</th>
+            </tr>
         </thead>
-        <tbody id="jobStatusData"></tbody>
+        <tbody>
+
+        </tbody>
     </table>
-        
-        <br><br><br><br><br><br><br>
-        <script>
-            $.getJSON('E:\Code\jstable-json-rest\jobStatus.json', function(data){
-            console.log(data);
-            $(data).each(function(i, data){
-                $('#jobStatusData').append($("<tr>")
-                    .append($("<td>").append(data.name))
-                    .append($("<td>").append(data.address))
-                    .append($("<td>").append(data.gender))
-                    .append($("<td>").append(data.designation))
-                    .append($("<td>").append(data.age)));
+
+    <script>
+        const data = [["Subash Nisam", 'test', "Medix Care", "2017.03.02", "9.30 am to 10.30 am"], ["Subash Nisam", 'test', "Medix Care", "2017.03.02", "3.30 to 5.30"]];
+
+        var tableContent = document.querySelector('#doctorresultTable > tbody');
+        data.map(instance => {
+            const row = document.createElement('tr');
+            tableContent.appendChild(row);
+            instance.map(info => {
+                const cell = document.createElement('td');
+                cell.innerText = info;
+                row.appendChild(cell);
             });
-            })
-                .done(function(){
-                    alert("Completed");
-                })
-                .fail(function(e){
-                    console.log('error:');
-                    console.error(e);
-                })
-                .always(function(){
-                    alert("always runs");
-                });
-        </script>
+        });
+    </script>
 </body>
+
 </html>
