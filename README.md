@@ -1,2 +1,2 @@
-# jstable-json-rest
-HTML Table with JS, jQuery REST API, and JSON Data.
+# JSTable with JSON and REST API's
+HTML Table with Javascript (JS), jQuery REST API, and JSON Data.
